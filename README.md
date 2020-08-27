@@ -1,1 +1,2 @@
-# qapp-gsuite-react
+# G-Suite-App
+Application for connecting G-Suite into QRadar

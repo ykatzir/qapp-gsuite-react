@@ -1,0 +1,155 @@
+.widget {
+    z-index: 0;
+    background-color: rgba(243, 243, 243);
+}
+
+.small-widget {
+    border-radius: 4px;
+    width: calc(25% - 13px);
+    height: 340px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.large-widget {
+    border-radius: 4px;
+    width: calc(50% - 12px);
+    height: 430px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.three-large-widget {
+    border-radius: 4px;
+    width: calc(75% - 7px);
+    height: 430px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 6px;
+    overflow: hidden;
+}
+
+.very-large-widget {
+    border-radius: 4px;
+    width: calc(100% - 10px);
+    height: 430px;
+    display: inline-block;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.t {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.bx--cc--chart-svg {
+    padding: 8px;
+}
+
+.bx--data-table {
+    width: 100%;
+    background-color: #eeeeee;
+}
+
+table,
+thead,
+tbody,
+tr,
+th,
+td,
+.bx--table-header-label,
+.bx--data-table-header {
+    background-color: transparent !important;
+}
+
+.bx--data-table-container {
+    height: 389px;
+    overflow-y: auto;
+}
+
+.bx--data-table-header {
+    float: left;
+    margin-bottom: -12px;
+}
+
+.bx--data-table-header__title {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.aql-title {
+    float: left;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.of-table {
+    padding: 25px;
+}
+
+.bx--loading {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 110px;
+}
+
+#time-control {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+#time-drop {
+    height: 46px;
+    width: 200px;
+    background-color: black;
+    border-left: 1px solid white !important;
+    border-bottom: none !important;
+}
+
+#time-drop * * {
+    color: white !important;
+}
+
+.bx--dropdown-item {
+    background-color: black;
+    outline: none;
+}
+
+.bx--dropdown--focused,
+.bx--dropdown-item:hover,
+.bx--dropdown-item:focus {
+    background-color: rgb(84, 86, 88) !important;
+    outline: none;
+}
+
+#offenses-table thead tr {
+    font-size: 14px;
+}
+
+#offenses-table tbody *:not(p) {
+    font-size: 12px;
+}
+
+#offenses-header {
+    width: 100%;
+    text-align: left;
+    background-color: #4db859 !important;
+    margin-top: -2px;
+    display: inline-block;
+}
+
+.view {
+    height: 20px;
+    width: 60px;
+}

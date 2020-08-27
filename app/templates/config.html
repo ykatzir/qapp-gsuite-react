@@ -1,0 +1,380 @@
+{% extends "base.html" %} {% block head %}
+<title>Connector Configuration</title>
+
+<link rel="stylesheet" href="static/css/config.css" /> {% endblock %} {% block content %}
+<!-- TABLE -->
+<div class="bx--data-table-container" data-table>
+    <div class="bx--data-table-header">
+        <h4 class="bx--data-table-header__title">Domains</h4>
+        <p class="bx--data-table-header__description"></p>
+    </div>
+    <section class="bx--table-toolbar">
+        <!-- Batch actions -->
+        <div class="bx--batch-actions" aria-label="Table Action Bar">
+            <div class="bx--action-list">
+                <button class="bx--btn bx--btn--primary" onclick="bulkDelete(event)" type="button">
+                    Delete
+                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                        xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16"
+                        viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M6 6H7V12H6zM9 6H10V12H9z"></path>
+                        <path d="M2 3v1h1v10c0 .6.4 1 1 1h8c.6 0 1-.4 1-1V4h1V3H2zM4 14V4h8v10H4zM6 1H10V2H6z"></path>
+                    </svg>
+                </button>
+                <button class="bx--btn bx--btn--primary" data-modal-target="#modal-edit" type="button">
+                    Edit
+                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                        xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16"
+                        viewBox="0 0 16 16" aria-hidden="true">
+                        <path
+                            d="M1 13H15V14H1zM12.7 4.5c.4-.4.4-1 0-1.4 0 0 0 0 0 0l-1.8-1.8c-.4-.4-1-.4-1.4 0 0 0 0 0 0 0L2 8.8V12h3.2L12.7 4.5zM10.2 2L12 3.8l-1.5 1.5L8.7 3.5 10.2 2zM3 11V9.2l5-5L9.8 6l-5 5H3z">
+                        </path>
+                    </svg>
+                </button>
+                <button data-event="action-bar-cancel" class="bx--btn bx--btn--primary bx--batch-summary__cancel">Cancel</button>
+            </div>
+            <div class="bx--batch-summary">
+                <p class="bx--batch-summary__para">
+                    <span data-items-selected>3</span> items selected
+                </p>
+            </div>
+        </div>
+
+        <div class="bx--toolbar-content">
+            <!--  Toolbar primary button -->
+            <button class="bx--btn bx--btn--primary curve-button" type="button" data-modal-target="#modal-vs9344weov">+
+                Add an Organization</button>
+        </div>
+    </section>
+    <!-- End Toolbar Content -->
+
+    <!-- Table -->
+    <table class="bx--data-table  bx--data-table--sort" id="domains-table" style="margin-top: 15px;">
+        <thead>
+            <tr>
+                <th class="bx--table-expand bx--table-expand__button" data-event="expandAll">
+                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-expand__svg" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path>
+                    </svg>
+                    <!-- checkbox th -->
+                    <!-- sortable th  -->
+                    <span class="bx--table-header-label"></span>
+                </th>
+                <th class="bx--table-column-checkbox">
+                    <!-- checkbox th -->
+                    <input data-event="select-all" id="bx--checkbox-20" class="bx--checkbox" type="checkbox" value="green" name="checkbox-20">
+                    <label for="bx--checkbox-20" class="bx--checkbox-label" aria-label="Label name"></label>
+                </th>
+                <th>
+                    <!-- checkbox th -->
+                    <!-- sortable th  -->
+                    <button class="bx--table-sort" onclick="sortTable(event)" data-event="sort" id="domain_name" title="Domain">
+                        <span class="bx--table-header-label">Domain</span>
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                            xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon" width="16" height="16"
+                            viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M12.3 9.3L8.5 13.1 8.5 1 7.5 1 7.5 13.1 3.7 9.3 3 10 8 15 13 10z"></path>
+                        </svg>
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                            xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon-unsorted" width="16"
+                            height="16" viewBox="0 0 16 16" aria-hidden="true">
+                            <path
+                                d="M13.8 10.3L12 12.1 12 2 11 2 11 12.1 9.2 10.3 8.5 11 11.5 14 14.5 11zM4.5 2L1.5 5 2.2 5.7 4 3.9 4 14 5 14 5 3.9 6.8 5.7 7.5 5z">
+                            </path>
+                        </svg>
+                    </button>
+                    <!-- no sort th -->
+                </th>
+                <th>
+                    <!-- checkbox th -->
+                    <!-- sortable th  -->
+                    <button class="bx--table-sort" onclick="sortTable(event)" data-event="sort" id="status" title="Status">
+                        <span class="bx--table-header-label">Connector Status</span>
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                            xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon" width="16" height="16"
+                            viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M12.3 9.3L8.5 13.1 8.5 1 7.5 1 7.5 13.1 3.7 9.3 3 10 8 15 13 10z"></path>
+                        </svg>
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                            xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon-unsorted" width="16"
+                            height="16" viewBox="0 0 16 16" aria-hidden="true">
+                            <path
+                                d="M13.8 10.3L12 12.1 12 2 11 2 11 12.1 9.2 10.3 8.5 11 11.5 14 14.5 11zM4.5 2L1.5 5 2.2 5.7 4 3.9 4 14 5 14 5 3.9 6.8 5.7 7.5 5z">
+                            </path>
+                        </svg>
+                    </button>
+                    <!-- no sort th -->
+                </th>
+                <th colspan="2">
+                    <!-- checkbox th -->
+                    <!-- sortable th  -->
+                    <button class="bx--table-sort" onclick="sortTable(event)" data-event="sort" id="enabled" title="Enable">
+                        <span class="bx--table-header-label">Enable</span>
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                            xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon" width="16" height="16"
+                            viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M12.3 9.3L8.5 13.1 8.5 1 7.5 1 7.5 13.1 3.7 9.3 3 10 8 15 13 10z"></path>
+                        </svg>
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                            xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon-unsorted" width="16"
+                            height="16" viewBox="0 0 16 16" aria-hidden="true">
+                            <path
+                                d="M13.8 10.3L12 12.1 12 2 11 2 11 12.1 9.2 10.3 8.5 11 11.5 14 14.5 11zM4.5 2L1.5 5 2.2 5.7 4 3.9 4 14 5 14 5 3.9 6.8 5.7 7.5 5z">
+                            </path>
+                        </svg>
+                    </button>
+                    <!-- no sort th -->
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<!-- END OF TABLE -->
+<!-- POP UP -->
+<div onclick="onclickModal(event)" data-modal id="modal-vs9344weov" class="bx--modal" role="dialog" aria-modal="true" aria-labelledby="modal-vs9344weov-label" aria-describedby="modal-vs9344weov-heading" tabindex="-1">
+    <div class="bx--modal-container curve-pop-up">
+        <div class="bx--modal-header">
+            <p class="bx--modal-header__heading bx--type-beta" id="modal-vs9344weov-heading">Add a New Organization</p>
+        </div>
+
+        <!-- Note: Modals with content that scrolls, at any viewport, requires `tabindex="0"` on the `bx--modal-content` element -->
+
+        <div class="bx--modal-content bx--modal-content--with-form" tabindex="0">
+            <form id="domain-form">
+                <div data-notification id="new-error" style="display: none;" class="bx--inline-notification bx--inline-notification--error bx--inline-notification--low-contrast" role="alert">
+                    <div class="bx--inline-notification__details">
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                            <path d="M10,1c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S15,1,10,1z M13.5,14.5l-8-8l1-1l8,8L13.5,14.5z">
+                            </path>
+                            <path d="M13.5,14.5l-8-8l1-1l8,8L13.5,14.5z" data-icon-path="inner-path" opacity="0"></path>
+                        </svg>
+                        <div class="bx--inline-notification__text-wrapper">
+                            <p id="new-error-title" class="bx--inline-notification__title">Notification title</p>
+                            <p id="new-error-subtitle" class="bx--inline-notification__subtitle">Subtitle text goes here.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div data-notification id="new-success" style="display: none;" class="bx--inline-notification bx--inline-notification--success bx--inline-notification--low-contrast" role="alert">
+                    <div class="bx--inline-notification__details">
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                            <path
+                                d="M10,1c-4.9,0-9,4.1-9,9s4.1,9,9,9s9-4,9-9S15,1,10,1z M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z">
+                            </path>
+                            <path fill="none" d="M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z"
+                                data-icon-path="inner-path" opacity="0"></path>
+                        </svg>
+                        <div class="bx--inline-notification__text-wrapper">
+                            <p id="new-success-title" class="bx--inline-notification__title">Notification title</p>
+                            <p id="new-success-subtitle" class="bx--inline-notification__subtitle">Notification subtitle.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bx--form-item">
+                    <label for="domain" class="bx--label">Domain Name</label>
+                    <div class="bx--form__helper-text">
+                        The identifier for the log source (e.g. g-suite.com)
+                    </div>
+                    <input id="identifier" name="domain" type="text" class="bx--text-input" placeholder="g-suite.com">
+                </div>
+                <div class="bx--form-item">
+                    <label for="host-ip" class="bx--label">Target Collector (IP:Port)</label>
+                    <div class="bx--form__helper-text">
+                        e.g. 192.168.30.80:514
+                    </div>
+                    <div id="host-input">
+                        <input id="host-ip" name="host-ip" type="text" class="bx--text-input" placeholder="192.168.30.80"> :
+                        <input id="host-port" name="host-port" type="text" class="bx--text-input" placeholder="514">
+                    </div>
+                </div>
+                <div class="bx--form-item" style="margin-top: 2%;">
+                    <label for="file-uploader" class="bx--label">Credentials</label>
+                    <div class="bx--form__helper-text">
+                        Only json files.
+                    </div>
+                    <div class="bx--file" data-file data-file-demo-state-manager>
+                        <label for="file-uploader" class="bx--file-browse-btn" role="button" tabindex="0">
+                                <div data-file-drop-container id="dropbox" class="bx--file__drop-container">
+                                Drag and drop file here or
+                                upload
+                                </div>
+                                <input type="file" class="bx--file-input" name="file-uploader" id="file-uploader" onchange="readFile()" data-file-uploader data-target="[data-file-container]" />
+                            </label>
+                        <div data-file-container class="bx--file-container">
+                        </div>
+                    </div>
+                </div>
+                <div class="bx--form-item">
+                    <label for="email" class="bx--label">Delegated User Name</label>
+                    <div class="bx--form__helper-text">
+                        The user name to delegate while authentication against the API (e.g. example@example.com)
+                    </div>
+                    <input id="email" name="email" type="email" class="bx--text-input" placeholder="example@example.com">
+                </div>
+                <div class="bx--form-item">
+                    <input class="bx--toggle-input" name="create-log-source" id="create-log-source" type="checkbox">
+                    <label class="bx--toggle-input__label" for="create-log-source">
+                            Create Log Source Automatically 
+                        <span class="bx--toggle__switch">
+                            <span class="bx--toggle__text--off" aria-hidden="true">Off</span>
+                            <span class="bx--toggle__text--on" aria-hidden="true">On</span>
+                        </span>
+                        </label>
+                </div>
+            </form>
+        </div>
+        <div class="bx--modal-content--overflow-indicator"></div>
+
+        <div class="bx--modal-footer shadow-handler">
+            <button class="bx--btn bx--btn--secondary shadow-this" onclick="resetModal()" type="button" data-modal-close>Close</button>
+            <button class="bx--btn bx--btn--danger-primary shadow-this" onclick="clicked()" id="test" type="button">Test
+                Connection</button>
+            <button class="bx--btn bx--btn--primary shadow-this" onclick="submitModal()" type="button">Submit</button>
+        </div>
+    </div>
+    <!-- END OF POP UP-->
+</div>
+<!-- BULK EDIT POP UP -->
+<div onclick="onclickModal(event)" data-modal id="modal-edit" class="bx--modal" role="dialog" aria-modal="true" aria-labelledby="modal-edit-label" aria-describedby="modal-edit-heading" tabindex="-1">
+    <div class="bx--modal-container curve-pop-up">
+        <div class="bx--modal-header">
+            <p class="bx--modal-header__heading bx--type-beta" id="modal-edit-heading">Edit Organizations</p>
+        </div>
+
+        <!-- Note: Modals with content that scrolls, at any viewport, requires `tabindex="0"` on the `bx--modal-content` element -->
+        <div class="bx--modal-content bx--modal-content--with-form" tabindex="0">
+            <form id="domain-form-edit">
+                <div data-notification id="edit-error" style="display: none;" class="bx--inline-notification bx--inline-notification--error bx--inline-notification--low-contrast" role="alert">
+                    <div class="bx--inline-notification__details">
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                            <path d="M10,1c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S15,1,10,1z M13.5,14.5l-8-8l1-1l8,8L13.5,14.5z">
+                            </path>
+                            <path d="M13.5,14.5l-8-8l1-1l8,8L13.5,14.5z" data-icon-path="inner-path" opacity="0"></path>
+                        </svg>
+                        <div class="bx--inline-notification__text-wrapper">
+                            <p id="edit-error-title" class="bx--inline-notification__title">Notification title</p>
+                            <p id="edit-error-subtitle" class="bx--inline-notification__subtitle">Subtitle text goes here.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div data-notification id="edit-success" style="display: none;" class="bx--inline-notification bx--inline-notification--success bx--inline-notification--low-contrast" role="alert">
+                    <div class="bx--inline-notification__details">
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                            <path
+                                d="M10,1c-4.9,0-9,4.1-9,9s4.1,9,9,9s9-4,9-9S15,1,10,1z M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z">
+                            </path>
+                            <path fill="none" d="M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z"
+                                data-icon-path="inner-path" opacity="0"></path>
+                        </svg>
+                        <div class="bx--inline-notification__text-wrapper">
+                            <p id="edit-success-title" class="bx--inline-notification__title">Notification title</p>
+                            <p id="edit-success-subtitle" class="bx--inline-notification__subtitle">Notification subtitle.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bx--form-item">
+                    <label for="host-ip-edit" class="bx--label">Target Collector (IP:Port)</label>
+                    <div class="bx--form__helper-text">
+                        e.g. 192.168.30.80:514
+                    </div>
+                    <div id="host-input-edit">
+                        <input id="host-ip-edit" name="host-ip" type="text" class="bx--text-input" placeholder="192.168.30.80"> :
+                        <input id="host-port-edit" name="host-port" type="text" class="bx--text-input" placeholder="514">
+                    </div>
+                </div>
+                <div class="bx--form-item" style="margin-top: 2%;">
+                    <label for="file-uploader" class="bx--label">Credentials</label>
+                    <div class="bx--form__helper-text">
+                        Only json files.
+                    </div>
+                    <div class="bx--file" data-file data-file-demo-state-manager>
+                        <label for="file-edit" class="bx--file-browse-btn" role="button" tabindex="0">
+                            <div data-file-drop-container id="dropbox-edit" class="bx--file__drop-container">
+                            Drag and drop file here or
+                            upload
+                            </div>
+                            <input type="file" class="bx--file-input" name="file-uploader" id="file-edit" onchange="readFileId('edit')" data-file-uploader data-target="[data-file-container]" />
+                        </label>
+                        <div data-file-container class="bx--file-container">
+                        </div>
+                    </div>
+                </div>
+                <div class="bx--form-item">
+                    <label for="email-edit" class="bx--label">Delegated User Name</label>
+                    <div class="bx--form__helper-text">
+                        The user name to delegate while authentication against the API (e.g. example@example.com)
+                    </div>
+                    <input id="email-edit" name="email" type="email" class="bx--text-input" placeholder="example@example.com">
+                </div>
+        </div>
+        <div class="bx--modal-content--overflow-indicator"></div>
+
+        <div class="bx--modal-footer shadow-handler">
+            <button class="bx--btn bx--btn--secondary shadow-this" onclick="resetModal()" type="button" data-modal-close>Close</button>
+            <button class="bx--btn bx--btn--danger-primary shadow-this" onclick="clickedModalEdit()" id="test-edit" type="button">Test Connection</button>
+            <button class="bx--btn bx--btn--primary shadow-this" onclick="submitModalEdit()" type="button">Edit
+                All</button>
+        </div>
+        </form>
+    </div>
+</div>
+
+<!-- END OF POP UP-->
+
+<button style="visibility: hidden;" data-modal-target="#modal-error" id="open-error" type="button"></button>
+<!-- BULK EDIT POP UP -->
+<div data-modal id="modal-error" class="bx--modal" role="dialog" aria-modal="true" aria-labelledby="modal-error-label" aria-describedby="modal-error-heading" tabindex="-1">
+    <div class="bx--modal-container msg-pop-up">
+        <div data-notification class="bx--toast-notification bx--toast-notification--error" role="alert">
+            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--toast-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10,1c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S15,1,10,1z M13.5,14.5l-8-8l1-1l8,8L13.5,14.5z"></path>
+                <path d="M13.5,14.5l-8-8l1-1l8,8L13.5,14.5z" data-icon-path="inner-path" opacity="0"></path>
+            </svg>
+            <div class="bx--toast-notification__details">
+                <h3 class="bx--toast-notification__title" id="error-header"></h3>
+                <p class="bx--toast-notification__subtitle" id="error-subtitle"></p>
+                <p class="bx--toast-notification__caption" id="error-caption"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button style="visibility: hidden;" data-modal-target="#modal-success" id="open-success" type="button"></button>
+<div data-modal id="modal-success" class="bx--modal" role="dialog" aria-modal="true" aria-labelledby="modal-success-label" aria-describedby="modal-success-heading" tabindex="-1">
+    <div class="bx--modal-container msg-pop-up">
+        <div data-notification class="bx--toast-notification bx--toast-notification--success" role="alert">
+            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                    d="M10,1c-4.9,0-9,4.1-9,9s4.1,9,9,9s9-4,9-9S15,1,10,1z M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z">
+                </path>
+                <path fill="none" d="M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z"
+                    data-icon-path="inner-path" opacity="0"></path>
+            </svg>
+            <div class="bx--toast-notification__details">
+                <h3 class="bx--toast-notification__title" id="success-header"></h3>
+                <p class="bx--toast-notification__subtitle" id="success-subtitle"></p>
+                <p class="bx--toast-notification__caption" id="success-caption"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button style="visibility: hidden;" data-modal-target="#modal-load" id="open-load" type="button"></button>
+<!-- BULK EDIT POP UP -->
+<div data-modal id="modal-load" class="bx--modal" role="dialog" aria-modal="true" aria-labelledby="modal-error-label" aria-describedby="modal-load-heading" tabindex="-1">
+    <div class="bx--modal-container" style="background: none; width: 120px">
+        <div class="loader"></div>
+    </div>
+</div>
+<!-- END OF POP UP-->
+<!-- Note: focusable span allows for focus wrap feature within Modals -->
+<span tabindex="0"></span>
+</div>
+
+<script src="static/js/config.js"></script>
+<script src="static/js/static.js"></script>
+<script src="static/js/spec.js"></script>
+{% endblock %}

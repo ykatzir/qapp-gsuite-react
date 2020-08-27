@@ -1,0 +1,6 @@
+cp /src_deps/init/connector.conf /etc/connector.conf
+cp /src_deps/init/supervisord.conf /etc/supervisord.conf
+cp /src_deps/init/geckodriver /usr/local/bin
+cp --remove-destination /src_deps/init/run.py /run.py
+yum install -y --skip-broken /src_deps/rpms/*
+npm start --prefix /app/static/frontend > /dev/null 2>&1 &

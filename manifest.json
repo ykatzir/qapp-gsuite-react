@@ -1,0 +1,29 @@
+{
+    "environment_variables": [{
+        "name": "PATHSTART",
+        "value": "/usr/local/bin"
+    }],
+    "name": "G Suite",
+    "description": "QMasters G Suite Application",
+    "resources": {
+        "memory": 200
+    },
+    "console_ip": "192.168.30.80",
+    "configuration_pages": [{
+        "required_capabilities": [
+            "ADMIN"
+        ],
+        "description": "Configure G Suite Connections",
+        "text": "G Suite Configuration",
+        "url": "index"
+    }],
+    "areas": [{
+        "id": "G_Suite_Dashboard",
+        "text": "G Suite",
+        "url": "dashboard",
+        "description": "Dashboard for G Suite app."
+    }],
+    "docker_host": "localhost",
+    "version": "0.0.1",
+    "uuid": "f256a5ab-dad1-45e3-9212-fc6859a43d61"
+}

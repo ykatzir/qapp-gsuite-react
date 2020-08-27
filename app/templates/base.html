@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>G Suite Integration</title>
+        <link href="static/css/carbon-components.min.css" rel="stylesheet">
+        <link rel="icon" type="image/png" href="static/images/GSuiteFavicon.png">
+        <script src="static/js/jquery.min.js"></script>
+        <script src="static/js/carbon-components.min.js"></script>
+
+        <style>
+        body {
+            height: 100%;
+            width: 100%;
+            background-color: #e0e0e0;
+        }
+        .header {
+            position: fixed;
+            background-color: black;
+            height: 46px;
+            width: 100%;
+            z-index: 1;
+        }
+        #qlogo {
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 6px;
+            height: 100%;
+        }
+        #glogo {
+            margin: 0 auto;
+            display: block;
+            padding: 6px;
+            height: 100%;
+        }
+        @media only screen and (max-width: 470px) {
+            #glogo {
+                position: absolute;
+                right: 0;
+                top: 0;
+                padding: 6px;
+                height: 100%;
+            }
+        }
+        #content-container {
+            background-color: #e0e0e0;
+            height: 100%;
+            width: 100%;
+            padding: 20px;
+            padding-top: 66px;
+        }
+        </style>
+        {% block head %}
+        {% endblock %}
+    </head>
+	<body>
+        <div class="header">
+            <a href="https://qmasters.co" target="_blank"><img src="static/images/QMastersLogo.png" id="qlogo" /></a>
+            <img src="static/images/GSuiteLogo2.png" id="glogo" />
+        </div>
+        <div id="content-container">
+            {% block content %}
+            {% endblock %}
+        </div>
+	</body>
+</html>

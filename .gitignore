@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# manifest inside the docker container
+/app/manifest.json
+
+# IDE files
+.idea
+.vscode

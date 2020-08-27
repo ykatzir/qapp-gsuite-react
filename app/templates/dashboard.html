@@ -1,0 +1,83 @@
+{% extends "base.html" %} {% block head %}
+<link rel="stylesheet" href="static/css/dashboard.css" />
+<script src="static/js/chart.min.js"></script>
+{% endblock %} {% block content %}
+<div id="time-control">
+    <div class="bx--dropdown__wrapper ">
+        <div data-dropdown data-value class="bx--dropdown" id="time-drop">
+            <button class="bx--dropdown-text" aria-haspopup="true" aria-expanded="false" aria-controls="time-menu" aria-labelledby="time-label time-value" type="button">
+        <span class="bx--dropdown-text__inner" id="time-value">15 minutes</span>
+        <span class="bx--dropdown__arrow-container">
+          <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+            xmlns="http://www.w3.org/2000/svg" class="bx--dropdown__arrow" width="16" height="16" viewBox="0 0 16 16"
+            aria-hidden="true">
+            <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+          </svg>
+        </span>
+      </button>
+            <ul class="bx--dropdown-list" id="time-menu" role="menu" tabindex="0" id="time-menu" aria-hidden="true" wh-menu-anchor="left" aria-labelledby="time-label">
+                <li data-option class="bx--dropdown-item bx--dropdown--selected">
+                    <a class="bx--dropdown-link" onclick="pullFrom(event)" tabindex="-1" role="menuitemradio" aria-checked="true" id="time-15min">15 minutes</a>
+                </li>
+                <li data-option class="bx--dropdown-item">
+                    <a class="bx--dropdown-link" onclick="pullFrom(event)" tabindex="-1" role="menuitemradio" aria-checked="true" id="time-30min">30 minutes</a>
+                </li>
+                <li data-option class="bx--dropdown-item">
+                    <a class="bx--dropdown-link" onclick="pullFrom(event)" tabindex="-1" role="menuitemradio" aria-checked="true" id="time-hour">1 hours</a>
+                </li>
+                <li data-option class="bx--dropdown-item">
+                    <a class="bx--dropdown-link" onclick="pullFrom(event)" tabindex="-1" role="menuitemradio" aria-checked="true" id="time-6hours">6 hours</a>
+                </li>
+                <li data-option class="bx--dropdown-item">
+                    <a class="bx--dropdown-link" onclick="pullFrom(event)" tabindex="-1" role="menuitemradio" aria-checked="true" id="time-12hours">12 hours</a>
+                </li>
+                <li data-option class="bx--dropdown-item">
+                    <a class="bx--dropdown-link" onclick="pullFrom(event)" tabindex="-1" role="menuitemradio" aria-checked="false" id="time-day">24 hours</a>
+                </li>
+                <li data-option class="bx--dropdown-item">
+                    <a class="bx--dropdown-link" onclick="pullFrom(event)" tabindex="-1" role="menuitemradio" aria-checked="false" id="time-3days">3 days</a>
+                </li>
+                <li data-option class="bx--dropdown-item">
+                    <a class="bx--dropdown-link" onclick="pullFrom(event)" tabindex="-1" role="menuitemradio" aria-checked="false" id="time-week">7 days</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<div class="t">
+    <div class="widget small-widget" style="height: 430px" id="time1">
+        <div style="height: 50%" id="timeCanvas"></div>
+        <hr style="width: 80%">
+        <div id="time3Canvas"></div>
+    </div>
+    <div class="widget three-large-widget" id="time2">
+        <div id="time2Canvas"></div>
+    </div>
+    <div class="widget small-widget" id="audit">
+        <div id="auditCanvas"></div>
+    </div>
+    <div class="widget small-widget" id="authentications">
+        <div id="authCanvas"></div>
+    </div>
+    <div class="widget small-widget" id="applications">
+        <div id="appCanvas"></div>
+    </div>
+    <div class="widget small-widget" id="admin">
+        <div id="adminCanvas"></div>
+    </div>
+    <div class="widget very-large-widget bx--data-table-container">
+        <div class="bx--data-table-header" id="offenses-header">
+            <h4 class="bx--data-table-header__title">G-Suite Offenses</h4>
+            <p>All related G-Suite offenses in QRadar.</p>
+        </div>
+        <!-- Table -->
+        <table class="bx--data-table" id="offenses-table" style="text-align: center"></table>
+    </div>
+</div>
+
+<script src="static/qjslib/qappfw.js"></script>
+<script src="static/js/aql.js"></script>
+<script src="static/js/dashboard_spec.js"></script>
+<script src="static/js/dashboard.js"></script>
+{% endblock %}
